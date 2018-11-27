@@ -1,15 +1,15 @@
 /**
- * @author Zeyu Chen
  * 
  * MySQL port
  */
 
 module.exports = {
     mysql: {
-        host: '127.0.0.1',
+        host: 'localhost',
         user: 'root',
-        password: '',
+        password: '12345',
         database: 'HIROBA',
-        port: 3306
+        port: 3306,
+        //insecureAuth : true
     }
 };

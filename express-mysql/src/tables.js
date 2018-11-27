@@ -1,9 +1,8 @@
 /**
- * @author Zeyu Chen
  * 
  * MySQL tables
  */
-var users = {
+const users = {
 	insert:'insert into users(id, username, password, class, email) values(?,?,?,?,?);',
 	update:'update users set username=?, password=?, class=?, email=? where id=?;',
 	delete: 'delete from users where id=?;',
@@ -12,4 +11,27 @@ var users = {
 	queryAll: 'select * from users;'
 };
 
-module.exports = users;
+const posts = {
+	insert:'insert into posts(id, title, content, status, users, date) values(?,?,?,?,?,?);',
+	update:'update posts set title=?, content=?, status=?, users=?, date=? where id=?;',
+	delete: 'delete from posts where id=?;',
+	queryById: 'select * from posts where id=?;',
+	queryByStatus: 'select * from posts where status=?;',
+	queryByTitle: 'select * from posts where title=?;',
+	queryAll: 'select * from posts;'
+}
+
+const comments = {
+	insert:'insert into comments(id, content, postId, fromUid, toUid) values(?,?,?,?,?);',
+	update:'update comments set content=?, postId=?, fromUid=?, toUid=? where id=?;',
+	delete: 'delete from comments where id=?;',
+	queryById: 'select * from comments where id=?;',
+	queryByPostId: 'select * from comments where postId=?;',
+	queryAll: 'select * from comments;'
+}
+
+module.exports = {
+	users: users,
+	posts: posts,
+	comments: comments
+};
