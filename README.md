@@ -5,11 +5,13 @@ react + redux, ant design
 
 ### How to test
 
-login page: [http://localhost:3000/login]
+login page: http://localhost:3000/login
 
-register page: [http://localhost:3000/register]
+register page: http://localhost:3000/register
 
-course page - bulletin: [http://localhost:3000/course]
+course page - bulletin: http://localhost:3000/course
+
+course page - new post: http://localhost:3000/course/newpost
 
 ### TODO:
 
