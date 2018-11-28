@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as  Link } from 'react-router-dom';
 import 'antd/dist/antd.css';
+import './menuLoggedOut.css';
 
 import { Menu, Icon } from 'antd';
 

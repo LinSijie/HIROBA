@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout, Menu, Form } from 'antd';
 
 import PostList from './listPosts';
 import BulletinBoard from './cardBulletin';
+import NewPostForm from './formNewPost';
 
 const { Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -19,6 +20,9 @@ class CoursePageLayout extends Component{
 					<Layout>
 						<Content>
 							<Route exact path="/course" component={BulletinBoard}/>
+							<Route path="/course/newpost" render = {() => (
+                  <WrappedNewPostForm/>
+                )}/>
 						</Content>
 					</Layout>
 				</Layout>
@@ -28,3 +32,5 @@ class CoursePageLayout extends Component{
 }
 
 export default CoursePageLayout;
+
+const WrappedNewPostForm = Form.create()(NewPostForm);

@@ -146,7 +146,7 @@ class RegistrationForm extends Component {
 								{...formItemLayout}
 								label="Identity"
 							>
-								{getFieldDecorator('phone', {
+								{getFieldDecorator('identity', {
 									rules: [{ required: true, message: 'Please input your identity!' }],
 								})(
 									<Select defaultValue="student" style={{ width: 120 }}>

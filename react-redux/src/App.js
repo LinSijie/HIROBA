@@ -23,10 +23,7 @@ class App extends Component {
             <Content>
               <div>
                 <Route path="/login" render = {() => (
-                  <div>
-                    <h1 style={{ textAlign: 'center'}}>Welcome to HIROBA</h1>
-                    <WrappedNormalLoginForm/>
-                  </div>
+                  <WrappedNormalLoginForm/>
                 )}/>
                 <Route path="/register" render = {() => (
                   <WrappedRegistrationForm/>

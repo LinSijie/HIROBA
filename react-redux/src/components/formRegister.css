@@ -1,4 +1,6 @@
 .register-form{
+    padding: 20px;
+    margin-top: 20px;
     margin: auto;
     max-width: 450px;
 }
