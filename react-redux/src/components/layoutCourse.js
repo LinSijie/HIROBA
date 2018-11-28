@@ -13,7 +13,7 @@ class CoursePageLayout extends Component{
 			<div>
 				<Layout>
 					<Sider width={300} style={{ background: '#fff' }}>
-						{/* <Route path="/course" component={PostList}/> */}
+						<Route path="/course" component={PostList}/>
 					</Sider>
 					<Layout style={{ padding: '0 24px 24px' }}>
 						<Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
