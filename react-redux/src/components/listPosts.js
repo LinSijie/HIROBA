@@ -60,7 +60,7 @@ class InfinitePostList extends Component {
     return (
       <div className="demo-infinite-container">
         <InfiniteScroll
-          initialLoad={false}
+          initialLoad={true}
           pageStart={0}
           loadMore={this.handleInfiniteOnLoad}
           hasMore={!this.state.loading && this.state.hasMore}

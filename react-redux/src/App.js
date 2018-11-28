@@ -20,7 +20,7 @@ class App extends Component {
             <Header>
               <Route path="/" component={menuLoggedOut}/>
             </Header>
-            <Content style={{ padding: '0 50px' }}>
+            <Content>
               <div>
                 <Route path="/login" render = {() => (
                   <div>
