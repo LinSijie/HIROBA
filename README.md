@@ -3,6 +3,14 @@
 ## Front End
 react + redux, ant design
 
+### How to test
+
+login page: [http://localhost:3000/login]
+
+register page: [http://localhost:3000/register]
+
+course page - bulletin: [http://localhost:3000/course]
+
 ### TODO:
 
 #### login page
