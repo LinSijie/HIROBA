@@ -5,6 +5,7 @@ import { Layout, Menu, Form } from 'antd';
 import PostList from './listPosts';
 import BulletinBoard from './cardBulletin';
 import NewPostForm from './formNewPost';
+import PostDetail from './listPostDetail';
 
 const { Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -22,7 +23,8 @@ class CoursePageLayout extends Component{
 							<Route exact path="/course" component={BulletinBoard}/>
 							<Route path="/course/newpost" render = {() => (
                   <WrappedNewPostForm/>
-                )}/>
+              )}/>
+							<Route path="/course/postdetail" component={PostDetail}/>
 						</Content>
 					</Layout>
 				</Layout>

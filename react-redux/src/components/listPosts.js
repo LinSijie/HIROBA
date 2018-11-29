@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { List, message, Avatar, Spin } from 'antd';
+import { Link } from 'react-router-dom';
+import { List, message, Avatar, Spin, Button } from 'antd';
 import reqwest from 'reqwest';
 import './listPosts.css';
 
 import InfiniteScroll from 'react-infinite-scroller';
+//import BulletinBoard from './cardBulletin';
+//import { Button } from 'antd/lib/radio';
 
 const fakeDataUrl = 'https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo';
 
@@ -58,7 +61,11 @@ class InfinitePostList extends Component {
 
   render() {
     return (
+      
       <div className="demo-infinite-container">
+        <Button type="primary" className="new-post-button">
+          <Link to='/course/newpost'>New Post</Link >
+				</Button>
         <InfiniteScroll
           initialLoad={true}
           pageStart={0}
@@ -75,7 +82,7 @@ class InfinitePostList extends Component {
                   title={<a href="https://ant.design">{item.name.last}</a>}
                   description={item.email}
                 />
-                <div>Content</div>
+                {/* <div>Content</div> */}
               </List.Item>
             )}
           >
