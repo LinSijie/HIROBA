@@ -8,7 +8,6 @@ import NewPostForm from './formNewPost';
 import PostDetail from './listPostDetail';
 
 const { Sider, Content } = Layout;
-const { SubMenu } = Menu;
 
 class CoursePageLayout extends Component{
 	render(){

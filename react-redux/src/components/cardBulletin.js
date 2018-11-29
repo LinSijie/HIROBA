@@ -19,7 +19,6 @@ class BulletinBoard extends Component{
 				<Card
 					type="inner"
 					title="Quiz 1"
-					extra={<a href="#">More</a>}
 				>
 					Quiz for Chapter 1.
 				</Card>
@@ -27,7 +26,6 @@ class BulletinBoard extends Component{
 					style={{ marginTop: 16 }}
 					type="inner"
 					title="Quiz 2"
-					extra={<a href="#">More</a>}
 				>
 					Quiz for Chapter 2.
 				</Card>

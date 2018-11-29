@@ -56,9 +56,9 @@ class NormalLoginForm extends Component {
 						)}
 						<a className="login-form-forgot" href="">Forgot password</a>
 						<Button type="primary" htmlType="submit" className="login-form-button">
-							<Link to='/course'>Log in</Link >
+							Log in
 						</Button>
-						Or <a href="">register now!</a>
+						Or <a href="../register">register now!</a>
 					</FormItem>
 				</Form> 
 			</div>

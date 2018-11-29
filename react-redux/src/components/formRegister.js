@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Form, Input,  Select, Row, Col, Checkbox, Button, AutoComplete } from 'antd';
+import { Form, Input,  Select, Checkbox, Button } from 'antd';
 import './formRegister.css';
 
 const FormItem = Form.Item;
 const Option = Select.Option;
-//const AutoCompleteOption = AutoComplete.Option;
 
 class RegistrationForm extends Component {
   state = {
@@ -43,19 +42,8 @@ class RegistrationForm extends Component {
     callback();
   }
 
-  // handleWebsiteChange = (value) => {
-  //   let autoCompleteResult;
-  //   if (!value) {
-  //     autoCompleteResult = [];
-  //   } else {
-  //     autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
-  //   }
-  //   this.setState({ autoCompleteResult });
-  // }
-
   render() {
     const { getFieldDecorator } = this.props.form;
-    // const { autoCompleteResult } = this.state;
 
     const formItemLayout = {
       labelCol: {
@@ -79,10 +67,6 @@ class RegistrationForm extends Component {
         },
       },
     };
-
-    // const websiteOptions = autoCompleteResult.map(website => (
-    //   <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
-    // ));
 
     return (
 			<Form onSubmit={this.handleSubmit} className="register-form">
