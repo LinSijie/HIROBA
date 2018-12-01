@@ -12,8 +12,8 @@ const users = {
 };
 
 const posts = {
-	insert:'insert into posts(id, title, content, status, users, date) values(?,?,?,?,?,?);',
-	update:'update posts set title=?, content=?, status=?, users=?, date=? where id=?;',
+	insert:'insert into posts(id, title, content, status, users) values(?,?,?,?,?);',
+	update:'update posts set title=?, content=?, status=?, users=? where id=?;',
 	delete: 'delete from posts where id=?;',
 	queryById: 'select * from posts where id=?;',
 	queryByStatus: 'select * from posts where status=?;',
