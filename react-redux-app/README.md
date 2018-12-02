@@ -15,6 +15,10 @@ course page - new post: http://localhost:3000/course/newpost
 
 ### TODO:
 
+#### redux
+
+state: user (id, username, password, class, email), post (id, title, content, status, users, date), comment (id, pid, content, from_uid, to_uid, date), fetched data
+
 #### login page
 ~~header: menu bar (item1: icon)~~
 
@@ -38,13 +42,15 @@ sider: new post button + list of posts(username, title, status, date)
 
 ~~course bulletin board when no post is selected~~
 
-~~contents of selected posts (id, title, content, status, users, date) + contents of comments(id, pid, content, from_uid, to_uid, date) + form component (add new comment)~~
+contents of selected posts (id, title, content, status, users, date) + contents of comments(id, pid, content, from_uid, to_uid, date) + form component (add new comment)
 
 ~~form component (add new post)~~
 
 ~~footer: "HIROBA ©2018 Created by LSJ"~~
 
-#### url
+#### debug
+
+
 
 
 ## Available Scripts

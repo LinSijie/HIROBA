@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { List, message, Avatar, Spin, Button } from 'antd';
-import reqwest from 'reqwest';
+import { List, message, Spin, Button } from 'antd';
 import './listPosts.css';
 
 import InfiniteScroll from 'react-infinite-scroller';
-//import BulletinBoard from './cardBulletin';
-//import { Button } from 'antd/lib/radio';
 
-const fakeDataUrl = 'https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo';
+const DataUrl = 'http://hiroba.czy-kasakun.com:8080/posts/queryAll';
 
 class InfinitePostList extends Component {
   state = {
@@ -17,24 +14,32 @@ class InfinitePostList extends Component {
     hasMore: true,
   }
 
-  getData = (callback) => {
-    reqwest({
-      url: fakeDataUrl,
-      type: 'json',
-      method: 'get',
-      contentType: 'application/json',
-      success: (res) => {
-        callback(res);
-      },
+  fetchQueryAll =(callback)=> {
+    fetch(DataUrl , {
+      method: 'POST',
+      headers: {},
+      body: {},
+    }).then((response) => {
+      if (response.ok) {
+          return response.json();
+      }
+    }).then((json) => {
+      callback(json);
+    }).catch((error) => {
+      console.error(error);
     });
   }
 
   componentDidMount() {
-    this.getData((res) => {
+    this.fetchQueryAll((json)=>{
       this.setState({
-        data: res.results,
+        data: json,
       });
-    });
+      console.log("in fetchQueryAll callback, set state",this.state.data);
+    }
+
+    );
+    console.log("in componentDidMount",this.state.data);
   }
 
   handleInfiniteOnLoad = () => {
@@ -50,18 +55,18 @@ class InfinitePostList extends Component {
       });
       return;
     }
-    this.getData((res) => {
-      data = data.concat(res.results);
+    this.fetchQueryAll((json) =>{
+      data = data.concat(json);
       this.setState({
         data,
-        loading: false,
-      });
+        loading:false,
+      })
     });
   }
 
   render() {
+    console.log("in render",this.state.data);
     return (
-      
       <div className="demo-infinite-container">
         <Button type="primary" className="new-post-button">
           <Link to='/course/newpost'>New Post</Link >
@@ -78,11 +83,10 @@ class InfinitePostList extends Component {
             renderItem={item => (
               <List.Item key={item.id}>
                 <List.Item.Meta
-                  // avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-                  title={<a href="https://ant.design">{item.name.last}</a>}
-                  description={item.email}
+                  title={<a href="course/postdetail">{item.title}</a>}
+                  description= {item.users}
                 />
-                {/* <div>Content</div> */}
+                { item.status }
               </List.Item>
             )}
           >
