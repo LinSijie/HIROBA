@@ -1,49 +1,37 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { List, message, Spin, Button } from 'antd';
-import './listPosts.css';
-
+import './postList.css';
 import InfiniteScroll from 'react-infinite-scroller';
 
-const DataUrl = 'http://hiroba.czy-kasakun.com:8080/posts/queryAll';
+import { fetchPosts, changeNextId } from "../actions";
 
-class InfinitePostList extends Component {
+class PostList extends Component {
+  static propTypes = {
+    data: PropTypes.array,
+    dispatch: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired
+  };
+
   state = {
-    data: [],
     loading: false,
     hasMore: true,
   }
 
-  fetchQueryAll =(callback)=> {
-    fetch(DataUrl , {
-      method: 'POST',
-      headers: {},
-      body: {},
-    }).then((response) => {
-      if (response.ok) {
-          return response.json();
-      }
-    }).then((json) => {
-      callback(json);
-    }).catch((error) => {
-      console.error(error);
-    });
+  componentDidMount() {
+    this.fetchData();
   }
 
-  componentDidMount() {
-    this.fetchQueryAll((json)=>{
-      this.setState({
-        data: json,
-      });
-      console.log("in fetchQueryAll callback, set state",this.state.data);
-    }
-
-    );
-    console.log("in componentDidMount",this.state.data);
+  fetchData = () => {
+    const { dispatch } = this.props;
+    dispatch(fetchPosts());
   }
 
   handleInfiniteOnLoad = () => {
-    let data = this.state.data;
+    let { data } = this.props;
     this.setState({
       loading: true,
     });
@@ -55,17 +43,14 @@ class InfinitePostList extends Component {
       });
       return;
     }
-    this.fetchQueryAll((json) =>{
-      data = data.concat(json);
-      this.setState({
-        data,
-        loading:false,
-      })
-    });
+  }
+  
+  handleClick(postId) {
+    const { dispatch } = this.props;
+    dispatch(changeNextId(postId));
   }
 
   render() {
-    console.log("in render",this.state.data);
     return (
       <div className="demo-infinite-container">
         <Button type="primary" className="new-post-button">
@@ -74,16 +59,16 @@ class InfinitePostList extends Component {
         <InfiniteScroll
           initialLoad={true}
           pageStart={0}
-          loadMore={this.handleInfiniteOnLoad}
-          hasMore={!this.state.loading && this.state.hasMore}
+          loadMore={false}
+          hasMore= {false}
           useWindow={false}
         >
           <List
-            dataSource={this.state.data}
+            dataSource={this.props.data}
             renderItem={item => (
               <List.Item key={item.id}>
                 <List.Item.Meta
-                  title={<a href="course/postdetail">{item.title}</a>}
+                  title={<a href="#" onClick={() => { this.handleClick(item.id)}}>{item.title}</a>}
                   description= {item.users}
                 />
                 { item.status }
@@ -101,5 +86,8 @@ class InfinitePostList extends Component {
     );
   }
 }
+const mapState = state => ({
+  data: state.posts.data
+});
 
-export default InfinitePostList;
+export default connect(mapState)(PostList);
