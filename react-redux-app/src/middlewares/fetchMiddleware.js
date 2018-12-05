@@ -7,7 +7,10 @@ import {
   fetchPostsError,
   FETCH_POST,
   fetchPostSuccess,
-  fetchPostError
+  fetchPostError,
+  FETCH_COMMENTS,
+  fetchCommentsSuccess,
+  fetchCommentsError
 } from "../actions";
 
 const BASE_URL="http://hiroba.czy-kasakun.com:8080";
@@ -45,6 +48,25 @@ export const fetchPostMiddleware = store => next => action => {
       })
       .catch (error => {
         return next(fetchPostError(error));
+      })
+  }
+  return next(action);
+};
+
+export const fetchCommentsMiddleware = store => next => action => {
+  const BASE_PARAM = "comments/queryByPostId";
+
+  if (action.type === FETCH_COMMENTS) {
+
+    const url = `${BASE_URL}/${BASE_PARAM}`;
+    const body = `postId=${action.postId}`;
+
+    apiPost (url, body)
+      .then (data => {
+        return next (fetchCommentsSuccess(data));
+      })
+      .catch (error => {
+        return next(fetchCommentsError(error));
       })
   }
   return next(action);

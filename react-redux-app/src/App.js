@@ -31,10 +31,6 @@ class App extends Component {
               <Menu.Item key="1"><Link to='/'><Icon type="team" />HIROBA</Link></Menu.Item>
               <Menu.Item key="2"><Link to='/course'><Icon type="global" />Computer Network</Link></Menu.Item>	
             </Menu>
-              {/* <Route exact path="/" component={menuLoggedOut}/>
-              <Route path="/login" component={menuLoggedOut}/>
-              <Route path="/register" component={menuLoggedOut}/>
-              <Route path="/course" component={menuLoggedIn}/> */}
             </Header>
             <Content>
               <div>

@@ -3,13 +3,17 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchPost } from '../actions';
 
+import { Card } from 'antd';
+
+const { Meta } = Card;
+
 class Post extends Component {
     static propTypes = {
       nextId: PropTypes.number,
       post: PropTypes.array,
       dispatch: PropTypes.func.isRequired,
-      history: PropTypes.object.isRequired,
-      location: PropTypes.object.isRequired
+      //history: PropTypes.object.isRequired,
+      //location: PropTypes.object.isRequired
     };
 
     // componentDidMount() {
@@ -30,9 +34,15 @@ class Post extends Component {
 
     render() {
       const { post } = this.props;
+      console.log(post)
       return (
         <div> 
-          {post.length > 0 && (<h1> {post[0].title}</h1>)}
+          <Card>
+            <Meta
+              title= {post.length > 0 && (<div> {post[0].title} </div>)}
+              description= {post.length > 0 && (<div> {post[0].content} </div>)}
+            />
+          </Card>
         </div>
       );
     }

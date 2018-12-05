@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './reducers/rootReducer';
-import { fetchPostsMiddleware, fetchPostMiddleware } from './middlewares/fetchMiddleware';
+import { fetchPostsMiddleware, fetchPostMiddleware, fetchCommentsMiddleware } from './middlewares/fetchMiddleware';
 // import fetchPost from './middlewares/fetchPost';
 
 const initStore = () => {
@@ -8,7 +8,13 @@ const initStore = () => {
 
     return createStore(
         rootReducer,
-        composeEnhancers(applyMiddleware(fetchPostsMiddleware, fetchPostMiddleware))
+        composeEnhancers(
+            applyMiddleware(
+                fetchPostsMiddleware,
+                fetchPostMiddleware,
+                fetchCommentsMiddleware
+            )
+        )
     );
 };
 
