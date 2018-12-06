@@ -10,8 +10,7 @@ const pool = mysql.createPool(db.mysql);
 const add = (req, res, next) => {
     pool.getConnection(function(err, connection) {
 
-        const param = [req.body.id,
-                       req.body.title,
+        const param = [req.body.title,
                        req.body.content,
                        req.body.status,
                        req.body.users];

@@ -12,7 +12,7 @@ const users = {
 };
 
 const posts = {
-	insert:'insert into posts(id, title, content, status, users) values(?,?,?,?,?);',
+	insert:'insert into posts(title, content, status, users) values(?,?,?,?);',
 	update:'update posts set title=?, content=?, status=?, users=? where id=?;',
 	delete: 'delete from posts where id=?;',
 	queryById: 'select * from posts where id=?;',
@@ -22,7 +22,7 @@ const posts = {
 }
 
 const comments = {
-	insert:'insert into comments(id, content, postId, fromUid, toUid) values(?,?,?,?,?);',
+	insert:'insert into comments(content, postId, fromUid, toUid) values(?,?,?,?);',
 	update:'update comments set content=?, postId=?, fromUid=?, toUid=? where id=?;',
 	delete: 'delete from comments where id=?;',
 	queryById: 'select * from comments where id=?;',
