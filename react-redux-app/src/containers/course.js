@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import { Layout } from 'antd';
+import { Layout, Form } from 'antd';
 
 import NewPostButton from '../components/newPostButton'
 import PostList from '../components/postList';
 import Post from '../components/post';
-import CommentList from '../components/commentList' 
+import CommentList from '../components/commentList'
+import NewCommentForm from '../components/newCommentForm' 
 // import BulletinBoard from './cardBulletin';
 // import NewPostForm from './formNewPost';
 // import PostDetail from './listPostDetail';
@@ -31,6 +32,7 @@ class Course extends Component{
 						<Content>
               <Post/>
 							<CommentList/>
+							<WrappedNewCommentForm/>
 							{/* <Route exact path="/course" component={BulletinBoard}/>
 							<Route path="/course/newpost" render = {() => (
                   <WrappedNewPostForm/>
@@ -46,4 +48,4 @@ class Course extends Component{
 
 export default Course;
 
-// const WrappedNewPostForm = Form.create()(NewPostForm);
+ const WrappedNewCommentForm = Form.create()(NewCommentForm);

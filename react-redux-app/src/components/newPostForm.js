@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Input, Button } from 'antd';
-import './formNewPost.css'
+import './newPostForm.css'
 
 const { TextArea } = Input;
 const FormItem = Form.Item;

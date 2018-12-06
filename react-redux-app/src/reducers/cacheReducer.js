@@ -1,5 +1,5 @@
 
-import { CACHE_SET } from "../actions";
+import { CACHE_SET } from "../actions/postAction";
 
 //stores key-value pairs and expiration date
 export const cacheReducer = (state = { data: {}, exp: {} }, action) => {

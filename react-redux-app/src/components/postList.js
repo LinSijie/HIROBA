@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { List, Button, Affix } from 'antd';
 import './postList.css';
 
-import { fetchPosts, changeNextId } from "../actions";
+import { fetchPosts, changeNextId } from "../actions/postAction";
 
 class PostList extends Component {
   static propTypes = {
@@ -14,11 +14,6 @@ class PostList extends Component {
     //history: PropTypes.object.isRequired,
     //location: PropTypes.object.isRequired
   };
-
-  state = {
-    loading: false,
-    hasMore: true,
-  }
 
   componentDidMount() {
     this.fetchData();

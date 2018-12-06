@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchPost } from '../actions';
+import { fetchPost } from '../actions/postAction';
 
 import { Card } from 'antd';
 
@@ -21,7 +21,10 @@ class Post extends Component {
     // }
 
     componentDidUpdate(prevProps, prevState) {
+      // const { prevNextId } = prevProps.nextId;
+      console.log("prevProps = ", prevProps);
       const { nextId } = this.props;
+      console.log("nextId = ", nextId);
       if(nextId !== -1) {
         this.fetchData(nextId);
       }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { List, Icon } from 'antd';
 import './commentList.css';
 
-import { fetchComments, changeNextId } from "../actions";
+import { fetchComments } from "../actions/commentAction";
 
 const IconText = ({ type, text }) => (
 	<span>
@@ -22,11 +22,6 @@ class CommentList extends Component {
 	//location: PropTypes.object.isRequired
   };
 
-  state = {
-	loading: false,
-	hasMore: true,
-  }
-
   componentDidUpdate() {
 		const { nextId } = this.props;
       if(nextId !== -1) {
@@ -35,8 +30,8 @@ class CommentList extends Component {
   }
 
   fetchData = (postId) => {
-	const { dispatch } = this.props;
-	dispatch(fetchComments(postId));
+		const { dispatch } = this.props;
+		dispatch(fetchComments(postId));
   }
 
   render() {
@@ -47,7 +42,7 @@ class CommentList extends Component {
 				renderItem={item => (
 					<List.Item 
 					key={item.id}
-					actions={[ <IconText type="like-o"/>, <IconText type="message" />]}
+					actions={[ <IconText type="like-o"/>, <IconText type="message"/>]}
 				>
 					<List.Item.Meta
 						title={item.content}
