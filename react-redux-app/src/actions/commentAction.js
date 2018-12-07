@@ -26,14 +26,14 @@ export const fetchComments = (postId) => {
 	return (dispatch) =>{
 		apiPost (url, body)
 			.then (data => {
-				return dispatch(fetchCommentsSuccess(data));
+				return dispatch(fetchCommentsSuccess(data, postId));
 			})
 			.catch (error => {
 				return dispatch(fetchCommentsError(error));
 		})
 	}
 }
-export const fetchCommentsSuccess = (data) => ({ type: FETCH_COMMENTS_SUCCESS, data });
+export const fetchCommentsSuccess = (data, postId) => ({ type: FETCH_COMMENTS_SUCCESS, data, postId });
 export const fetchCommentsError = (error) => ({ type: FETCH_COMMENTS_ERROR, error });
 
 /**
