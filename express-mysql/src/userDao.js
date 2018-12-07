@@ -81,11 +81,11 @@ const queryById = (req, res, next) => {
 	pool.getConnection(function(err, connection) {
 		const id = req.body.id;
 		connection.query(tables.users.queryById, id, function(err, result) {
-			if(result.length !== 0){
-				result = utils.msg.VALID_USER;
-			} else {
-				result = utils.msg.INVALID_USER;
-			}
+			// if(result.length !== 0){
+			// 	result = utils.msg.VALID_USER;
+			// } else {
+			// 	result = utils.msg.INVALID_USER;
+			// }
 			utils.jsonHelper(res, result);
 			connection.release();
 		});
@@ -122,12 +122,12 @@ const queryAll = (req, res, next) => {
  */
 const login = (req, res, next) => {
 	pool.getConnection(function(err, connection) {
-		const username = req.body.username;
-		connection.query(tables.users.queryByUsername, username, function(err, result) {
+		const id = req.body.id;
+		connection.query(tables.users.queryById, id, function(err, result) {
 			if (result) {
 				let [ userInfo ] = result;
 				if (userInfo.password === req.body.password) {
-					req.session.username = req.body.username; // success, setup session
+					req.session.username = userInfo.username; // success, setup session
 
 					result = utils.msg.SUCCESS_MSG;
 				} else {
