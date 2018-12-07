@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { List, Icon } from 'antd';
+import { List, Form, Icon } from 'antd';
 import './commentList.css';
+
+import NewCommentForm from '../components/newCommentForm'
 
 import { fetchComments } from "../actions/commentAction";
 
@@ -16,10 +18,10 @@ const IconText = ({ type, text }) => (
 
 class CommentList extends Component {
   static propTypes = {
-	data: PropTypes.array,
-	dispatch: PropTypes.func.isRequired,
-	//history: PropTypes.object.isRequired,
-	//location: PropTypes.object.isRequired
+		data: PropTypes.array,
+		dispatch: PropTypes.func.isRequired,
+		//history: PropTypes.object.isRequired,
+		//location: PropTypes.object.isRequired
   };
 
   componentDidUpdate() {
@@ -36,8 +38,9 @@ class CommentList extends Component {
 
   render() {
 	return (
-	  <div className="comment-infinite-container">
+	  <div>
 			<List
+				className="comment-infinite-container"
 				dataSource={this.props.data}
 				renderItem={item => (
 					<List.Item 
@@ -59,13 +62,16 @@ class CommentList extends Component {
 				)}
 			>
 			</List>
+			<WrappedNewCommentForm/>
 	  </div>
 	);
   }
 }
 const mapState = state => ({
-	nextId: state.post.nextId,
+	nextId: state.comments.nextId,
   data: state.comments.data
 });
 
 export default connect(mapState)(CommentList);
+
+const WrappedNewCommentForm = Form.create()(NewCommentForm);

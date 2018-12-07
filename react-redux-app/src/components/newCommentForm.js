@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Input } from 'antd';
 import { connect } from "react-redux";	
-import { fetchNewComment } from '../actions/commentAction';
+import { addNewComment, fetchComments } from '../actions/commentAction';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -10,9 +10,11 @@ const { TextArea } = Input;
 
 class NewComment extends Component {
 	
-	fetchData = (data) =>{
-		const { dispatch, nextId } = this.props;
-		//dispatch(fetchNewComment(nextId, data));
+	fetchData = (data) => {
+		const { dispatch, currId } = this.props;
+		if (currId !== undefined){
+			dispatch(addNewComment(data, currId));
+		}
 	}
 
 	handleSubmit = (e) => {
@@ -24,7 +26,7 @@ class NewComment extends Component {
 		  }
 		});
 	}
-	  
+
 	render() {
 	  const { getFieldDecorator } = this.props.form;
 		return (
@@ -63,7 +65,8 @@ class NewComment extends Component {
 }
 
 const mapState = state => ({
-	nextId: state.post.nextId,
+	nextId: state.comments.nextId,
+	currId: state.comments.currId,
   data: state.comments.data
 });
 export default connect(mapState)(NewComment);

@@ -1,27 +1,25 @@
-import { FETCH_COMMENTS, FETCH_COMMENTS_SUCCESS, FETCH_COMMENTS_ERROR } from "../actions/commentAction"
-import { FETCH_NEW_COMMENT, FETCH_NEW_COMMENT_SUCCESS, FETCH_NEW_COMMENT_ERROR } from "../actions/commentAction"
+import { FETCH_COMMENTS, FETCH_COMMENTS_SUCCESS, FETCH_COMMENTS_ERROR, COMMENT_CHANGE_NEXT_ID } from "../actions/commentAction"
+import { ADD_NEW_COMMENT, ADD_NEW_COMMENT_SUCCESS, ADD_NEW_COMMENT_ERROR } from "../actions/commentAction"
+
+let currPostId;
 
 export const commentsReducer = (state = { data: {} }, action) => {
   switch(action.type) {
     case FETCH_COMMENTS:
-      return { data: {}, isloading: true };
+      return { nextId: -1, data: {}, currId:currPostId, isloading: true };
     case FETCH_COMMENTS_SUCCESS:
-      return { data: action.data, isloading: true };
+      return { nextId: -1, data: action.data, currId:currPostId, isloading: true };
     case FETCH_COMMENTS_ERROR:
-      return { data: {}, error: action.error, isloading: false };
-    default:
-      return state;
-  }
-}
-
-export const newCommentReducer = (state = { data: {} }, action) => {
-  switch(action.type) {
-    case FETCH_NEW_COMMENT:
-      return { data: {}, isloading: true };
-    case FETCH_NEW_COMMENT_SUCCESS:
-      return { data: {}, isloading: true };
-    case FETCH_NEW_COMMENT_ERROR:
-      return { data: {}, error: action.error, isloading: false };
+      return { nextId: -1, data: {}, currId:currPostId, error: action.error, isloading: false };
+    case ADD_NEW_COMMENT:
+      return { nextId: -1, data: {}, currId:currPostId, isloading: true };
+    case ADD_NEW_COMMENT_SUCCESS:
+      return { nextId: -1, data: action.data, currId:currPostId, isloading: true };
+    case ADD_NEW_COMMENT_ERROR:
+      return { nextId: -1, data: {}, currId:currPostId, error: action.error, isloading: false };
+    case COMMENT_CHANGE_NEXT_ID:
+      currPostId = action.nextId;
+      return { nextId: action.nextId, data: {}, currId: currPostId, error: action.error, isloading: false };
     default:
       return state;
   }

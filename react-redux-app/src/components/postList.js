@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { List, Button, Affix } from 'antd';
 import './postList.css';
 
-import { fetchPosts, changeNextId } from "../actions/postAction";
+import { fetchPosts, postChangeNextId } from "../actions/postAction";
+import { commentChangeNextId, newCommentChangeNextId } from "../actions/commentAction";
 
 class PostList extends Component {
   static propTypes = {
@@ -26,7 +27,8 @@ class PostList extends Component {
   
   handleClick(postId) {
     const { dispatch } = this.props;
-    dispatch(changeNextId(postId));
+    dispatch(postChangeNextId(postId));
+    dispatch(commentChangeNextId(postId));
   }
 
   render() {
@@ -37,7 +39,7 @@ class PostList extends Component {
             <Link to='/course/newpost'>New Post</Link >
           </Button>
         </Affix> */}
-        <List
+        <List 
           dataSource={this.props.data}
           renderItem={item => (
             <List.Item key={item.id}>

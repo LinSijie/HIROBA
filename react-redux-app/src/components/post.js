@@ -21,10 +21,7 @@ class Post extends Component {
     // }
 
     componentDidUpdate(prevProps, prevState) {
-      // const { prevNextId } = prevProps.nextId;
-      console.log("prevProps = ", prevProps);
       const { nextId } = this.props;
-      console.log("nextId = ", nextId);
       if(nextId !== -1) {
         this.fetchData(nextId);
       }
