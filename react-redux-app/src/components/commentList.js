@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { List, Form, Icon } from 'antd';
 import './commentList.css';
 
-import NewCommentForm from '../components/newCommentForm'
+import NewCommentForm from '../components/newCommentForm';
 
 import { fetchComments } from "../actions/commentAction";
 

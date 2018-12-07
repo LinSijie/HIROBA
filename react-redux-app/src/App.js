@@ -8,7 +8,7 @@ import 'antd/dist/antd.css';
 //import menuLoggedOut from './components/menuLoggedOut';
 //import menuLoggedIn from './components/menuLoggedIn';
 import HomePage from './components/buttonHomepage';
-import NormalLoginForm from './components/formLogin';
+import NormalLoginForm from './components/loginForm';
 import RegistrationForm from './components/formRegister';
 // import CoursePageLayout from './components/layoutCourse';
 import Course from './containers/course';

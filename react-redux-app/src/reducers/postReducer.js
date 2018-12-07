@@ -1,5 +1,11 @@
-import { FETCH_POSTS_SUCCESS, FETCH_POSTS_ERROR } from "../actions/postAction"
-import { FETCH_POST_SUCCESS, FETCH_POST_ERROR, POST_CHANGE_NEXT_ID } from "../actions/postAction"
+import { 
+  FETCH_POSTS_SUCCESS, 
+  FETCH_POSTS_ERROR,
+  FETCH_POST_SUCCESS,
+  FETCH_POST_ERROR,
+  ADD_NEW_POST_ERROR,
+  POST_CHANGE_NEXT_ID 
+} from "../actions/postAction"
 
 export const postReducer = (state = { data: {} }, action) => {
   switch(action.type) {
@@ -19,6 +25,8 @@ export const postsReducer = (state = { data: {} }, action) => {
     case FETCH_POSTS_SUCCESS:
       return { data: action.data, isloading: true };
     case FETCH_POSTS_ERROR:
+      return { data: {}, error: action.error, isloading: false };
+    case ADD_NEW_POST_ERROR:
       return { data: {}, error: action.error, isloading: false };
     default:
       return state;

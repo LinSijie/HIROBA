@@ -6,7 +6,7 @@ import { List, Button, Affix } from 'antd';
 import './postList.css';
 
 import { fetchPosts, postChangeNextId } from "../actions/postAction";
-import { commentChangeNextId, newCommentChangeNextId } from "../actions/commentAction";
+import { commentChangeNextId } from "../actions/commentAction";
 
 class PostList extends Component {
   static propTypes = {

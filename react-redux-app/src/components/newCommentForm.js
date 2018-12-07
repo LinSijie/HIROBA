@@ -6,8 +6,6 @@ import { addNewCommentAsync } from '../actions/commentAction';
 const FormItem = Form.Item;
 const { TextArea } = Input;
 
-
-
 class NewComment extends Component {
 	
 	fetchData = (data) => {
@@ -25,6 +23,7 @@ class NewComment extends Component {
 				this.fetchData(values);
 		  }
 		});
+		this.props.form.resetFields();
 	}
 
 	render() {
@@ -67,6 +66,6 @@ class NewComment extends Component {
 const mapState = state => ({
 	nextId: state.comments.nextId,
 	currId: state.comments.currId,
-  data: state.comments.data
+  	data: state.comments.data
 });
 export default connect(mapState)(NewComment);
