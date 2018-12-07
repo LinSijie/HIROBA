@@ -81,6 +81,11 @@ const queryById = (req, res, next) => {
 	pool.getConnection(function(err, connection) {
 		const id = req.body.id;
 		connection.query(tables.users.queryById, id, function(err, result) {
+			if(result.length !== 0){
+				result = utils.msg.VALID_USER;
+			} else {
+				result = utils.msg.INVALID_USER;
+			}
 			utils.jsonHelper(res, result);
 			connection.release();
 		});

@@ -15,7 +15,6 @@ const add = (req, res, next) => {
                        req.body.status,
                        req.body.users];
         
-        //if (err) throw err;
         connection.query(tables.posts.insert, param, function(err, result) {
             if (result) {
                 result = utils.msg.SUCCESS_MSG;    

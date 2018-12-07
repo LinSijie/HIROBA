@@ -7,9 +7,10 @@
  */
 const msg = {
 	SUCCESS_MSG: { code: 200, msg:'Success' },
-	INVALID_USER: { code: 1001, msg: 'User Not Found'},
-	INVALID_PWD: { code: 1002, msg: 'Invalid Password' },
-	INVALID_REQ: { code: 1003, msg: 'Invalid Request' },
+	VALID_USER: { code:1001, msg: 'User Exist'},
+	INVALID_USER: { code: 1002, msg: 'User Not Found'},
+	INVALID_PWD: { code: 1003, msg: 'Invalid Password' },
+	INVALID_REQ: { code: 1004, msg: 'Invalid Request' },
 	ERROR_UNKOWN: { code:9999, msg:'Error Unkonwn'}
 }
 
