@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, Input } from 'antd';
 import { connect } from "react-redux";	
-import { addNewComment, fetchComments } from '../actions/commentAction';
+import { addNewCommentAsync } from '../actions/commentAction';
 
 const FormItem = Form.Item;
 const { TextArea } = Input;
@@ -13,7 +13,7 @@ class NewComment extends Component {
 	fetchData = (data) => {
 		const { dispatch, currId } = this.props;
 		if (currId !== undefined){
-			dispatch(addNewComment(data, currId));
+			dispatch(addNewCommentAsync(data, currId));
 		}
 	}
 
@@ -31,7 +31,7 @@ class NewComment extends Component {
 	  const { getFieldDecorator } = this.props.form;
 		return (
 			<div>
-				<p
+				{/* <p
 					style={{
 						fontSize: 14,
 						color: 'rgba(0, 0, 0, 0.85)',
@@ -41,7 +41,7 @@ class NewComment extends Component {
 					}}
 				>
 					New Comment
-				</p>
+				</p> */}
 
 				<Form onSubmit={this.handleSubmit}>
 					<FormItem>
@@ -50,7 +50,7 @@ class NewComment extends Component {
 								required: true, message: 'Please input your comment.',
 							}],
 						})(
-							<TextArea rows={4} placeholder="Content" />
+							<TextArea rows={4} placeholder="New Commment" />
 						)}
 					</FormItem>
 					<FormItem>
