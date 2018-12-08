@@ -30,7 +30,8 @@ class App extends Component {
               style={{ lineHeight: '64px' }}
             >
               <Menu.Item key="1"><Icon type="team" />HIROBA</Menu.Item>
-              <Menu.Item key="2"><Icon type="global" />Computer Network</Menu.Item>               
+              <Menu.Item key="2"><Icon type="global" />Computer Network</Menu.Item> 
+              <Menu.Item key="3"><Link to='/'>LOG OUT</Link></Menu.Item>               
             </Menu>
             </Header>
             <Content>

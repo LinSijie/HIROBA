@@ -15,6 +15,7 @@ class NewComment extends Component {
 				message.error("Please log in to comment!")
 			}
 			else{
+				console.log("dispatch addNewCommentAsync() ");
 				dispatch(addNewCommentAsync(data, currId, userId));
 			}
 		}

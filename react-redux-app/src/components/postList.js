@@ -49,7 +49,7 @@ class PostList extends Component {
                 title={<a href="#" onClick={() => { this.handleClick(item.id)}}>{item.title}</a>}
                 description= {item.users}
               />
-              { item.status }
+              {/* { item.status } */}
             </List.Item>
           )}
         >
