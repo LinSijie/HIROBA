@@ -124,7 +124,7 @@ const login = (req, res, next) => {
 	pool.getConnection(function(err, connection) {
 		const id = req.body.id;
 		connection.query(tables.users.queryById, id, function(err, result) {
-			if (result) {
+			if (result.length !== 0) {
 				let [ userInfo ] = result;
 				if (userInfo.password === req.body.password) {
 					req.session.username = userInfo.username; // success, setup session
