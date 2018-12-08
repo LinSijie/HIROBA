@@ -23,6 +23,8 @@ class PostList extends Component {
   fetchData = () => {
     const { dispatch } = this.props;
     dispatch(fetchPosts());
+    dispatch(postChangeNextId(1));
+    dispatch(commentChangeNextId(1));
   }
   
   handleClick(postId) {

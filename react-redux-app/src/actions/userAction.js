@@ -18,15 +18,15 @@ const BASE_URL="http://hiroba.czy-kasakun.com:8080";
  * 
  */
 
-export const login = data => {
+export const login = formData => {
     const BASE_PARAM = "users/login";
     const url = `${BASE_URL}/${BASE_PARAM}`;
-    const body = `id=${data.userId}&password=${data.password}`;
+    const body = `id=${formData.userId}&password=${formData.password}`;
     return (dispatch) =>{
         apiPost (url, body)
             .then (data => {
                 if(data.code === 200){
-                    return dispatch(loginSuccess(data.code));
+                    return dispatch(loginSuccess(data.code, formData.userId));
                 } else {
                     return dispatch(loginFail(data.code));
                 }
@@ -37,7 +37,7 @@ export const login = data => {
     }
 }
 export const loginInit = () => ({type: LOGIN_INIT});
-export const loginSuccess = code => ({type: LOGIN_SUCCESS, code});
+export const loginSuccess = (code, userId) => ({type: LOGIN_SUCCESS, code, userId});
 export const loginFail = code => ({type: LOGIN_FAIL, code});
 export const loginError = code => ({type: LOGIN_ERROR, code});
 

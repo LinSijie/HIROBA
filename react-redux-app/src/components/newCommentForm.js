@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import { connect } from "react-redux";	
 import { addNewCommentAsync } from '../actions/commentAction';
 
@@ -9,9 +9,14 @@ const { TextArea } = Input;
 class NewComment extends Component {
 	
 	fetchData = (data) => {
-		const { dispatch, currId } = this.props;
+		const { dispatch, currId, userId } = this.props;
 		if (currId !== undefined){
-			dispatch(addNewCommentAsync(data, currId));
+			if(userId === undefined){
+				message.error("Please log in to comment!")
+			}
+			else{
+				dispatch(addNewCommentAsync(data, currId, userId));
+			}
 		}
 	}
 
@@ -29,7 +34,7 @@ class NewComment extends Component {
 	render() {
 	  const { getFieldDecorator } = this.props.form;
 		return (
-			<div>
+			<div className="new-comment-form">
 				{/* <p
 					style={{
 						fontSize: 14,
@@ -42,7 +47,7 @@ class NewComment extends Component {
 					New Comment
 				</p> */}
 
-				<Form onSubmit={this.handleSubmit}>
+				<Form onSubmit={this.handleSubmit} className="new-comment-form">
 					<FormItem>
 						{getFieldDecorator('commentContent', {
 							rules: [{
@@ -66,6 +71,7 @@ class NewComment extends Component {
 const mapState = state => ({
 	nextId: state.comments.nextId,
 	currId: state.comments.currId,
-  	data: state.comments.data
+	data: state.comments.data,
+	userId: state.user.userId,
 });
 export default connect(mapState)(NewComment);

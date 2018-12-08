@@ -71,10 +71,10 @@ export const fetchPostError = error => ({ type: FETCH_POST_ERROR, error });
  * 3. if fail, dispatch addNewPostError()
  */
 
-export const addNewPostAsync = (data) => {
+export const addNewPostAsync = (data, userId) => {
 	const BASE_PARAM = "posts/addPost";
 	let url = `${BASE_URL}/${BASE_PARAM}`;
-	let body = `title=${data.postTitle}&content=${data.postContent}&status=active&users=1`;
+	let body = `title=${data.postTitle}&content=${data.postContent}&status=active&users=${userId}`;
 
 	return (dispatch) =>{
 		apiPost (url, body)

@@ -42,10 +42,10 @@ export const fetchCommentsError = (error) => ({ type: FETCH_COMMENTS_ERROR, erro
  * 2. if success, dispatch fetchComments() to fetch comment list snd refresh the page
  * 3. if fail, dispatch addNewCommentError()
  */
-export const addNewCommentAsync = (data, postId) => {
+export const addNewCommentAsync = (data, postId, fromUid) => {
 	const BASE_PARAM = "comments/addComment";
 	let url = `${BASE_URL}/${BASE_PARAM}`;
-	let body = `content=${data.commentContent}&postId=${postId}&fromUid=2&toUid=1`;
+	let body = `content=${data.commentContent}&postId=${postId}&fromUid=${fromUid}&toUid=1`;
 
 	return (dispatch) =>{
 		apiPost (url, body)

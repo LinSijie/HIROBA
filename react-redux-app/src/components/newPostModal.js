@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Modal, Form, Input } from 'antd';
+import { Button, Modal, Form, Input, message } from 'antd';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import './newPostModal.css';
@@ -49,8 +49,13 @@ class NewPostModal extends Component {
 	};
 
 	fetchData = (data) => {
-		const { dispatch } = this.props;
-		dispatch(addNewPostAsync(data));
+		const { dispatch, userId } = this.props;
+		if (userId === undefined){
+			message.error("Please log in to post!")
+		}
+		else{
+			dispatch(addNewPostAsync(data, userId));
+		}	
 	}
   
 	showModal = () => {
@@ -95,6 +100,7 @@ class NewPostModal extends Component {
 }
 
 const mapState = state => ({
-	data: state.posts.data
+	data: state.posts.data,
+	userId: state.user.userId
 });
 export default connect(mapState)(NewPostModal);

@@ -25,7 +25,7 @@ class RegistrationForm extends Component {
 			this.setState({ redirectToReferrer:true });
 		}
 		else if (code === 9999){
-			message.error("Duplicate ID");
+			message.error("ID already exists!");
 			dispatch(addUserInit());
 		}
 	}

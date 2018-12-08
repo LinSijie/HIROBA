@@ -41,20 +41,25 @@ class CommentList extends Component {
 	  <div>
 			<List
 				className="comment-infinite-container"
+				pagination={{
+					onChange: (page) => {
+						console.log(page);
+					},
+					pageSize: 5,
+				}}
 				dataSource={this.props.data}
 				renderItem={item => (
 					<List.Item 
 					key={item.id}
-					actions={[ <IconText type="like-o"/>, <IconText type="message"/>]}
+					// actions={[ <IconText type="like-o"/>, <IconText type="message"/>]}
 				>
 					<List.Item.Meta
 						title={item.content}
 						description= {
 							<div>
-								from
 								{item.fromUid}
-								to
-								{item.toUid}
+								{/* to
+								{item.toUid} */}
 							</div>
 						}
 					/>

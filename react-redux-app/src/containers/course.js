@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { Layout, Form } from 'antd';
+import './course.css'
 
 // import NewPostButton from '../components/newPostButton'
 import NewPostModal from '../components/newPostModal'
@@ -22,36 +23,36 @@ class Course extends Component{
     dispatch: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired
-	};
-	render(){
+  };
+  render(){
     // console.log(this.props.location.search);
-		return(
-			<div>
-				<Layout>
-					<Sider width={300} style={{ background: '#fff' }}>
-						{/* <NewPostButton/> */}
-						<NewPostModal/>
-						<PostList/>
-					</Sider>
-					<Layout>
-						<Content>
-							<Route exact path="/course" render = {() => (
-                  <div>
-										<Post/>
-										<CommentList/>
-									</div>
+    return(
+      <div>
+        <Layout>
+          <Sider width={300} style={{ background: '#fff' }}>
+            {/* <NewPostButton/> */}
+            <NewPostModal/>
+            <PostList/>
+          </Sider>
+          <Layout>
+            <Content>
+              <Route exact path="/course" render = {() => (
+                  <div className="post-comment-display">
+                    <Post/>
+                    <CommentList/>
+                  </div>
               )}/>
-							{/* <Route exact path="/course" component={BulletinBoard}/>
-							<Route path="/course/newpost" render = {() => (
+              {/* <Route exact path="/course" component={BulletinBoard}/>
+              <Route path="/course/newpost" render = {() => (
                   <WrappedNewPostForm/>
               )}/>
-							<Route path="/course/postdetail" component={PostDetail}/> */}
-						</Content>
-					</Layout>
-				</Layout>
-			</div>
-		);
-	}
+              <Route path="/course/postdetail" component={PostDetail}/> */}
+            </Content>
+          </Layout>
+        </Layout>
+      </div>
+    );
+  }
 }
 
 export default Course;

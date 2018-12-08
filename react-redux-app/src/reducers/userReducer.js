@@ -9,24 +9,27 @@ import {
 	ADD_USER_ERROR
 } from '../actions/userAction'
 
+let currUserId = {};
+
 export const userReducer = (state = { code: {} }, action) => {
 	switch(action.type) {
 		case LOGIN_INIT:
-			return { code: {}, isloading: true };
+			return { code: {}, userId: currUserId, isloading: true };
 		case LOGIN_SUCCESS:
-		  return { code: action.code, isloading: true };
+			currUserId = action.userId;
+		  return { code: action.code, userId: currUserId, isloading: true };
 		case LOGIN_FAIL:
-			return { code: action.code, isloading: true };
+			return { code: action.code, userId: currUserId, isloading: true };
 		case LOGIN_ERROR:
-			return { code: {}, error: action.error, isloading: false };
+			return { code: {}, userId: currUserId, error: action.error, isloading: false };
 		case ADD_USER_INIT:
-			return { code: {}, isloading: true };
+			return { code: {}, userId: currUserId, isloading: true };
 		case ADD_USER_SUCCESS:
-		  return { code: action.code, isloading: true };
+		  return { code: action.code, userId: currUserId, isloading: true };
 		case ADD_USER_FAIL:
-			return { code: action.code, isloading: true };
+			return { code: action.code, userId: currUserId, isloading: true };
 		case ADD_USER_ERROR:
-			return { code: {}, error: action.error, isloading: false };
+			return { code: {}, userId: currUserId, error: action.error, isloading: false };
 		default:
 		  return state;
 	  }

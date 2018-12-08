@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import './loginForm.css';
 import { Form, Icon, Input, Button, Checkbox, message} from 'antd';
 
@@ -46,7 +46,7 @@ class NormalLoginForm extends Component {
 		if (redirectToReferrer) return <Redirect to={from} />;
 		const { getFieldDecorator } = this.props.form;
 		return (
-			<div>
+			<div className="login-page">
 				<p
 					style={{
 						fontSize: 20,
@@ -85,7 +85,8 @@ class NormalLoginForm extends Component {
 						<Button type="primary" htmlType="submit" className="login-form-button">
 							Log in
 						</Button>
-						Or <a href="../register">register now!</a>
+						Or <Link to='/register'>register now!</Link> 
+						{/* <a href="../register">register now!</a> */}
 					</FormItem>
 				</Form> 
 			</div>
