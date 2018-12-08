@@ -5,19 +5,27 @@ react + redux, ant design
 
 ### How to test
 
-login page: http://localhost:3000/login
+login page: http://localhost:3001/login
 
-register page: http://localhost:3000/register
+register page: http://localhost:3001/register
 
-course page - bulletin: http://localhost:3000/course
+course page: http://localhost:3001/course
 
-course page - new post: http://localhost:3000/course/newpost
+course page - new post: http://localhost:3001/course/newpost
 
 ### TODO:
 
 #### redux
 
-state: user (id, username, password, class, email), post (id, title, content, status, users, date), comment (id, pid, content, from_uid, to_uid, date), fetched data
+state: 
+
+user (code, error, isLoading)
+
+post (nextId, data, error, isLoading)
+
+posts (data, error, isLoading)
+
+comment (nextId, data, currId, error, isLoading)
 
 #### login page
 ~~header: menu bar (item1: icon)~~
@@ -36,13 +44,13 @@ state: user (id, username, password, class, email), post (id, title, content, st
 #### course page 
 header: menu bar(item1: icon, item2: course name, item3:user name, item4: LOGOUT button)
 
-sider: new post button + list of posts(username, title, status, date)
+~~sider: new post button + list of posts(username, title, status, date)~~
 
 ~~content:~~
 
 ~~course bulletin board when no post is selected~~
 
-contents of selected posts (id, title, content, status, users, date) + contents of comments(id, pid, content, from_uid, to_uid, date) + form component (add new comment)
+contents of selected posts (id, title, content, status, users, date) + contents of comments(id, content, from_uid, to_uid, date) + form component (add new comment)
 
 ~~form component (add new post)~~
 

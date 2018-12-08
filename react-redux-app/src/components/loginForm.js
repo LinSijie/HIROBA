@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import './loginForm.css';
 import { Form, Icon, Input, Button, Checkbox, message} from 'antd';
 
@@ -9,6 +9,7 @@ import { login, loginInit } from '../actions/userAction';
 const FormItem = Form.Item;
 
 class NormalLoginForm extends Component {
+	state = { redirectToReferrer: false };
 
   handleSubmit = (e) => {
 		e.preventDefault();
@@ -20,13 +21,14 @@ class NormalLoginForm extends Component {
 			}
 		});
 	}
-	
+
 	componentDidUpdate(){
 		const { dispatch, code } = this.props;
 		console.log("code=", code);
 		if (code === 200){
-			message.success("Login Success");
+			message.success("Welcome");
 			dispatch(loginInit());
+			this.setState({ redirectToReferrer:true });
 		}
 		else if (code === 1003){
 			message.error("Invalid Password");
@@ -39,6 +41,9 @@ class NormalLoginForm extends Component {
 	}
 
   render() {
+		let { from } = { from: { pathname: "/course" } };
+		let { redirectToReferrer } = this.state;
+		if (redirectToReferrer) return <Redirect to={from} />;
 		const { getFieldDecorator } = this.props.form;
 		return (
 			<div>

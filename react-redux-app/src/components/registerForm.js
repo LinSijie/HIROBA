@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Redirect } from 'react-router-dom';
 import { Form, Input,  Select, Checkbox, Button, message } from 'antd';
 import './registerForm.css';
 
@@ -11,7 +12,8 @@ const Option = Select.Option;
 class RegistrationForm extends Component {
   state = {
     confirmDirty: false,
-    autoCompleteResult: [],
+		autoCompleteResult: [],
+		redirectToReferrer: false
 	};
 	
 	componentDidUpdate(){
@@ -20,6 +22,7 @@ class RegistrationForm extends Component {
 		if (code === 200){
 			message.success("Register Success");
 			dispatch(addUserInit());
+			this.setState({ redirectToReferrer:true });
 		}
 		else if (code === 9999){
 			message.error("Duplicate ID");
@@ -63,6 +66,10 @@ class RegistrationForm extends Component {
   }
 
   render() {
+		let { from } = { from: { pathname: "/login" } };
+		let { redirectToReferrer } = this.state;
+		if (redirectToReferrer) return <Redirect to={from} />;
+
     const { getFieldDecorator } = this.props.form;
 
     const formItemLayout = {
