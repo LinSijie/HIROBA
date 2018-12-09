@@ -11,7 +11,6 @@ register page: http://localhost:3001/register
 
 course page: http://localhost:3001/course
 
-course page - new post: http://localhost:3001/course/newpost
 
 ### TODO:
 
@@ -28,14 +27,14 @@ posts (data, error, isLoading)
 comment (nextId, data, currId, error, isLoading)
 
 #### login page
-~~header: menu bar (item1: icon)~~
+header: menu bar (item1: icon)
 
 ~~content: "Welcome to HIROBA" + form component(log in)~~
 
 ~~footer: "HIROBA ©2018 Created by LSJ"~~
 
 #### register page
-~~header: menu bar (item1: icon)~~
+header: menu bar (item1: icon)
 
 ~~content: form component(register)~~
 

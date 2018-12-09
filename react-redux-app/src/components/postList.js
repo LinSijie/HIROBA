@@ -23,8 +23,8 @@ class PostList extends Component {
   fetchData = () => {
     const { dispatch } = this.props;
     dispatch(fetchPosts());
-    dispatch(postChangeNextId(1));
-    dispatch(commentChangeNextId(1));
+    dispatch(postChangeNextId(29));//id starts from 29 in the database
+    dispatch(commentChangeNextId(29));
   }
   
   handleClick(postId) {
